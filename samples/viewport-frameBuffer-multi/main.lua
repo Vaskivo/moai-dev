@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
--- Copyright (c) 2010-2017 Zipline Games, Inc. 
--- All Rights Reserved. 
+-- Copyright (c) 2010-2017 Zipline Games, Inc.
+-- All Rights Reserved.
 -- http://getmoai.com
 ----------------------------------------------------------------
 
@@ -9,10 +9,10 @@ MOAISim.openWindow ( "test", 576, 576 )
 -- set up offscreen drawing
 local frameBuffer = MOAIFrameBufferTexture.new ()
 frameBuffer:init ( 512, 512 )
-frameBuffer:setClearColor ()
+--frameBuffer:setClearColor ()
 MOAIRenderMgr.setBufferTable ({ frameBuffer })
 
-gfxQuad = MOAIGfxQuad2D.new ()
+gfxQuad = MOAISpriteDeck2D.new ()
 gfxQuad:setTexture ( frameBuffer )
 gfxQuad:setRect ( 0, 0, 512, 512 )
 gfxQuad:setUVRect ( 0, 1, 1, 0 )
@@ -41,11 +41,11 @@ local function makeLayer ( x, y, w, h, r, g, b, a )
 	local layer = MOAIPartitionViewLayer.new ()
 	layer:setViewport ( viewport )
 	layer:setClearColor ( r, g, b, a )
-	
+
 	return layer
 end
 
-gfxQuad = MOAIGfxQuad2D.new ()
+gfxQuad = MOAISpriteDeck2D.new ()
 gfxQuad:setTexture ( "moai.png" )
 gfxQuad:setRect ( -64, -64, 64, 64 )
 gfxQuad:setUVRect ( 0, 0, 1, 1 )
@@ -72,29 +72,29 @@ for i, layer in ipairs ( layers ) do
 end
 
 function clickCallback ( down )
-	
+
 	if down then
-		
+
 		local mouseX, mouseY = MOAIInputMgr.device.pointer:getLoc ()
 		mouseX, mouseY = mainLayer:wndToWorld ( mouseX, mouseY )
-		
+
 		if not mainProp:inside ( mouseX, mouseY ) then return end
-		
+
 		mouseX, mouseY = mainProp:worldToModel ( mouseX, mouseY )
-		
+
 		local hit = false
-		
+
 		for i, layer in ipairs ( layers ) do
-		
+
 			local x, y = layer:wndToWorld ( mouseX, mouseY )
 			local pick = layer:getPartition ():propForPoint ( x, y )
-			
+
 			if pick then
 				hit = true
 				pick:moveRot ( 10, 0.125, MOAIEaseType.EASE_IN )
 			end
 		end
-		
+
 		if not hit then
 			mainProp:moveRot ( 5, 0.125, MOAIEaseType.EASE_IN )
 		end

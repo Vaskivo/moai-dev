@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
--- Copyright (c) 2010-2017 Zipline Games, Inc. 
--- All Rights Reserved. 
+-- Copyright (c) 2010-2017 Zipline Games, Inc.
+-- All Rights Reserved.
 -- http://getmoai.com
 ----------------------------------------------------------------
 
@@ -14,7 +14,7 @@ layer = MOAIPartitionViewLayer.new ()
 layer:setViewport ( viewport )
 layer:pushRenderPass ()
 
-gfxQuad = MOAIGfxQuad2D.new ()
+gfxQuad = MOAISpriteDeck2D.new ()
 gfxQuad:setTexture ( "moai.png" )
 gfxQuad:setRect ( -64, -64, 64, 64 )
 
@@ -26,12 +26,12 @@ prop:setPartition ( layer )
 font = MOAIFont.new ()
 font:loadFromTTF ( "arialbd.ttf", " abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,.?!", 12, 163 )
 
-textbox = MOAITextBox.new ()
+textbox = MOAITextLabel.new ()
 textbox:setFont ( font )
 textbox:setRect ( -160, -80, 160, 80 )
 textbox:setLoc ( 0, -100 )
 textbox:setYFlip ( true )
-textbox:setAlignment ( MOAITextBox.CENTER_JUSTIFY )
+textbox:setAlignment ( MOAITextLabel.CENTER_JUSTIFY )
 textbox:setPartition ( layer )
 
 textbox:setString ( "Moai has installed correctly! <c:0F0>Check out the samples folder.<c>" )
@@ -39,10 +39,10 @@ textbox:spool ()
 
 function twirlingTowardsFreedom ()
 	while true do
-		MOAIThread.blockOnAction ( prop:moveRot ( 360, 1.5 ))
-		MOAIThread.blockOnAction ( prop:moveRot ( -360, 1.5 ))
+		MOAICoroutine.blockOnAction ( prop:moveRot ( 0, 0, 360, 3 ) )
+		MOAICoroutine.blockOnAction ( prop:moveRot ( 0, 0, -360, 3 ) )
 	end
 end
 
-thread = MOAIThread.new ()
+thread = MOAICoroutine.new ()
 thread:run ( twirlingTowardsFreedom )

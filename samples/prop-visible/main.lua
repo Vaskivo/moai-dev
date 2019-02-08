@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
--- Copyright (c) 2010-2017 Zipline Games, Inc. 
--- All Rights Reserved. 
+-- Copyright (c) 2010-2017 Zipline Games, Inc.
+-- All Rights Reserved.
 -- http://getmoai.com
 ----------------------------------------------------------------
 
@@ -14,31 +14,31 @@ layer = MOAIPartitionViewLayer.new ()
 layer:setViewport ( viewport )
 layer:pushRenderPass ()
 
-gfxQuad = MOAIGfxQuad2D.new ()
-gfxQuad:setTexture ( "moai.png" )
+gfxQuad = MOAISpriteDeck2D.new ()
+gfxQuad:setTexture ( "../resources/moai.png" )
 gfxQuad:setRect ( -64, -64, 64, 64 )
 
 prop1 = MOAIProp.new ()
 prop1:setDeck ( gfxQuad )
-prop1::setPartition ( layer )
+prop1:setPartition ( layer )
 
 prop2 = MOAIProp.new ()
 prop2:setDeck ( gfxQuad )
 prop2:setLoc(10, 10)
 prop2:setAttrLink ( MOAIProp.INHERIT_VISIBLE, prop1, MOAIProp.ATTR_VISIBLE )
-prop2::setPartition ( layer )
+prop2:setPartition ( layer )
 
 prop3 = MOAIProp.new ()
 prop3:setDeck ( gfxQuad )
 prop3:setLoc(20, 20)
 prop3:setAttrLink ( MOAIProp.INHERIT_VISIBLE, prop2, MOAIProp.ATTR_VISIBLE )
-prop3::setPartition ( layer )
+prop3:setPartition ( layer )
 
 prop4 = MOAIProp.new ()
 prop4:setDeck ( gfxQuad )
 prop4:setLoc(30, 30)
 prop4:setAttrLink ( MOAIProp.ATTR_LOCAL_VISIBLE, prop3, MOAIProp.ATTR_VISIBLE )
-prop4::setPartition ( layer )
+prop4:setPartition ( layer )
 
 function printVisibleState(propName)
     local prop = _G[propName]

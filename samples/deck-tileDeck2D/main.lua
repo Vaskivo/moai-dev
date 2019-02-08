@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
--- Copyright (c) 2010-2017 Zipline Games, Inc. 
--- All Rights Reserved. 
+-- Copyright (c) 2010-2017 Zipline Games, Inc.
+-- All Rights Reserved.
 -- http://getmoai.com
 ----------------------------------------------------------------
 
@@ -22,3 +22,4 @@ tileDeck:setRect ( -64, -64, 64, 64 )
 prop = MOAIGraphicsProp.new ()
 prop:setDeck ( tileDeck )
 prop:setPartition ( layer )
+prop:setIndex(3)

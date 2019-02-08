@@ -9,6 +9,7 @@ cd `dirname $0`
 
 # Verify paths
 if [ ! -f "$MOAI_BIN/moai" ]; then
+    echo "$MOAI_BIN/moai"
     echo "---------------------------------------------------------------------------"
     echo "Error: The MOAI_BIN environment variable doesn't exist or its pointing to an"
     echo "invalid path.  Please point it at a folder containing moai executable"

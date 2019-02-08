@@ -16,9 +16,9 @@ case `uname` in
     ;;
 
     Linux*)
-        MOAI_SDK_BIN="$MOAI_SDK_HOME/bin/nix/moai"
-        MOAI_BUILD_SCRIPT="$MOAI_SDK_HOME/pito/build/build-nix.sh"
-    	exit 1
+        MOAI_SDK_BIN="$MOAI_SDK_HOME/cmake/build/build-linux/moai"
+        MOAI_BUILD_SCRIPT="$MOAI_SDK_HOME/cmake/build-linux.sh"
+    	#exit 1
     ;;
     *)
         echo "Didn't recognize operating system; cannot locate or build moai .. aborting"

@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
--- Copyright (c) 2010-2017 Zipline Games, Inc. 
--- All Rights Reserved. 
+-- Copyright (c) 2010-2017 Zipline Games, Inc.
+-- All Rights Reserved.
 -- http://getmoai.com
 ----------------------------------------------------------------
 
@@ -26,7 +26,7 @@ for i, escape, param, iter in util.iterateCommandLine ( arg or {}) do
 	if ( escape == 'c' or escape == 'clear' ) or (( escape == 'C' or escape == 'CLEAR' ) and param ) then
 
 		gRun = false
-		
+
 		sample = param or gDirectories [ gCount ]
 		if sample then
 			gMarked [ sample ] = nil
@@ -74,7 +74,7 @@ for i, escape, param, iter in util.iterateCommandLine ( arg or {}) do
 			MOAISerializer.serializeToFile ( MARKED_FILENAME, gMarked )
 		end
 	end
-	
+
 	if escape == 'r' or escape == 'restart' then
 		gRun = false
 		gCount = 1
@@ -96,7 +96,7 @@ for i, escape, param, iter in util.iterateCommandLine ( arg or {}) do
 	if escape == 'x' or escape == 'xclear' then
 
 		gRun = false
-		
+
 		gMarked = {}
 		MOAISerializer.serializeToFile ( MARKED_FILENAME, gMarked )
 	end
